@@ -1,0 +1,43 @@
+!
+!	GRID251.F90
+!	
+!
+!	Created by allen tang on 12/12/10.
+!	Copyright 2012 __MyCompanyName__. All rights reserved.
+!
+!   CAVITY 251X251
+!
+PROGRAM TEST
+!
+  IMPLICIT NONE
+!
+  INTEGER, PARAMETER :: INX=251
+!
+  REAL, DIMENSION (INX, INX) :: X,Y,DAT
+  INTEGER :: I,J,MX,MY
+  INTEGER :: IMAX=251
+  INTEGER :: JMAX=251
+!
+  OPEN(UNIT=5,FILE="FORT.GR",FORM="UNFORMATTED")
+  READ(5) MX,MY
+  READ(5) ((X(I,J),I=1,IMAX),J=1,JMAX)
+  READ(5) ((Y(I,J),I=1,IMAX),J=1,JMAX)
+  CLOSE(5)
+!
+  OPEN(UNIT=10, FILE="COV.GR", FORM="UNFORMATTED")
+  READ(10) ((DAT(I,J),I=1,IMAX),J=1,JMAX)
+  CLOSE(10)
+!
+  OPEN(UNIT=20,FILE="OUTPUT.TXT")
+  DO J=1,JMAX
+    WRITE(20," ")
+	DO I=1,IMAX
+      WRITE(20,"(F18.8,' ',F18.8,' ',F18.8)") X(I,J),Y(I,J),DAT(I,J)*5.0
+	END DO
+  END DO
+  CLOSE(20)
+!
+END PROGRAM TEST
+
+
+

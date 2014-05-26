@@ -1,0 +1,9 @@
+This is the folder which included the program files of my doctor paper.
+
+/DeltaT ... different time steps
+/DeltaX ... different grid size
+/Epsilon ... different artificial visocity term
+/fig about bifurcation ... the reynolds number of bifurcation in standard
+/GridMaker ... make different grid
+/Randomness ... different forcibally added randomness
+
